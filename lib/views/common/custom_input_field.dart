@@ -43,7 +43,7 @@ class CustomInputField extends HookConsumerWidget{
             color: Colors.black.withOpacity(0.1),
             spreadRadius: 2,
             blurRadius: 5,
-            offset: Offset(0, 3),
+            offset: const Offset(0, 3),
           )
         ]
       ),
@@ -51,8 +51,8 @@ class CustomInputField extends HookConsumerWidget{
         children: [
           Image.asset(
             icon,
-            width: 18.w,
-            height: 18.w,
+            width: 20,
+            //height: 18.w,
           ),
           SizedBox(
             width: 23.w,
@@ -62,8 +62,8 @@ class CustomInputField extends HookConsumerWidget{
               controller: controller,
               obscureText: obscureText,
               onChanged: onChanged,
-              style: TextStyle(fontSize: 18.sp,color: Colors.black),
               decoration: InputDecoration(
+                fillColor: const Color.fromARGB(137, 90, 90, 90),
                 hintText: hintText,
                 border: InputBorder.none,
                 contentPadding: EdgeInsets.symmetric(vertical: 16.h),

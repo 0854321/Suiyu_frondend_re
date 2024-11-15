@@ -1,7 +1,7 @@
 // window_config.dart
 
-import 'package:window_manager/window_manager.dart';
 import 'package:flutter/widgets.dart';
+import 'package:window_manager/window_manager.dart';
 
 ///视窗的配置信息
 class WindowConfig {

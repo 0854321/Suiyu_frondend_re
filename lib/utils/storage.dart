@@ -18,8 +18,8 @@ class StorageUtil {
   }
 
   Future<bool?> setJSON(String key, dynamic jsonVal) async {
-    String jsonString = jsonEncode(jsonVal);
-    return await setValue(key, jsonString);
+    final String jsonString = jsonEncode(jsonVal);
+    return setValue(key, jsonString);
   }
 
   Future<bool?> setValue(String key, dynamic value) async {
@@ -37,7 +37,7 @@ class StorageUtil {
   }
 
   dynamic getJSON(String key) {
-    String? jsonString = _prefs?.getString(key);
+    final String? jsonString = _prefs?.getString(key);
     return jsonString == null ? null : jsonDecode(jsonString);
   }
 

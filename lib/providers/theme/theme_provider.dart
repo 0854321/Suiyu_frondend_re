@@ -9,7 +9,7 @@ final themeNotifier = StateNotifierProvider<ThemeNotifier, bool>((ref){
 class ThemeNotifier extends StateNotifier<bool> {
   ThemeNotifier(super.state); //默认不是夜间模式
 
-  void setDart(bool isDark) async {
+  Future<void> setDart(bool isDark) async {
     state = isDark;
     await StorageUtil().setValue(AppConsts.saveTheme, isDark);
   }
