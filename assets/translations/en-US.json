@@ -1,0 +1,11 @@
+{
+    "welcomeMessage": "Hi, Welcome to Bit Browser",
+    "login": "Login",
+    "register": "Register",
+    "username": "Username",
+    "password": "Password",
+    "notAccountTip": "Don't have an account? Go register",
+    "hasAccountTip": "Already have an account? Go log in",
+    "authCode": "Auth Code"
+  }
+  
