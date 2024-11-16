@@ -1,19 +1,12 @@
-import 'dart:ffi';
-
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:suiyu_frontend/config/app_colors.dart';
 import 'package:suiyu_frontend/config/app_dart_colors.dart';
 import 'package:suiyu_frontend/config/app_images_path.dart';
-import 'package:suiyu_frontend/config/language_service.dart';
-import 'package:suiyu_frontend/core/constants/app_iamge_assets.dart';
-import 'package:suiyu_frontend/main.dart';
-import 'package:suiyu_frontend/models/user_info_save_model.dart';
+
 import 'package:suiyu_frontend/providers/language_provider.dart';
-import 'package:suiyu_frontend/providers/login_provider.dart';
 import 'package:suiyu_frontend/providers/theme/theme_provider.dart';
 import 'package:suiyu_frontend/views/auth/widgets/login_form_widget.dart';
 import 'package:suiyu_frontend/views/auth/widgets/register_form_widget.dart';
@@ -28,26 +21,7 @@ class LoginScreen extends HookConsumerWidget {
     final bool themeDark = ref.watch(themeNotifier);
     String locale = ref.watch(languageProvider).languageCode;
     var isLogin = true;
-
-    final userInfoFuture = ref.watch(loginProvider);
-
-    final usernameController = useTextEditingController();
-    final passwordController = useTextEditingController();
-    final isRememberPwdSelected = useState(false); //记住密码选项
-
     final isLoginForm = useState(true);
-    //初始化时运行一次
-    useEffect(() {
-      if (userInfoFuture.isNotEmpty) {
-        UserInfo mUserInfo = UserInfo.fromJson(userInfoFuture);
-        if (mUserInfo.rememberPassword == true) {
-          usernameController.text = mUserInfo.username;
-          passwordController.text = mUserInfo.password;
-          isRememberPwdSelected.value = mUserInfo.rememberPassword;
-        }
-      }
-      return null;
-    }, []);
 
     return DragToMoveArea(
         child: Scaffold(
@@ -103,7 +77,7 @@ class LoginScreen extends HookConsumerWidget {
                     //登陆卡片
                     Container(
                       alignment: Alignment.center,
-                      //height: 300,
+                      //height: 450,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(20),
@@ -163,48 +137,52 @@ class LoginScreen extends HookConsumerWidget {
                                   ? LoginFormWidget()
                                   : RegisterFormWidget(),
                               // const SizedBox(height: 20),
-                              Padding(
-                                padding:
-                                    const EdgeInsets.fromLTRB(25, 0, 25, 20),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Container(
-                                        child: InkWell(
-                                          onTap: () {
-                                            isRememberPwdSelected.value = !isRememberPwdSelected.value;
-                                            print(isRememberPwdSelected);
-                                          },
-                                            child: Row(
-                                      children: [
-                                        Image.asset(
-                                          !isRememberPwdSelected.value
-                                              ? AppImageAssets.iconNotSelect
-                                              : AppImageAssets.iconSelectPwd,
-                                          width: 20,
-                                        ),
-                                        Text(
-                                          languageService.translate(
-                                              'remember_password',
-                                              locale: locale),
-                                        )
-                                      ],
-                                    ))),
-                                    Container(
-                                      child: Text(
-                                        languageService.translate(
-                                            'forgot_password',
-                                            locale: locale),
-                                      ),
-                                    )
-                                  ],
-                                ),
-                              )
+                              // Padding(
+                              //   padding:
+                              //       const EdgeInsets.fromLTRB(25, 0, 25, 20),
+                              //   child: Row(
+                              //     mainAxisAlignment:
+                              //         MainAxisAlignment.spaceBetween,
+                              //     children: [
+                              //       Container(
+                              //           child: InkWell(
+                              //               onTap: () {
+                              //                 isRememberPwdSelected.value =
+                              //                     !isRememberPwdSelected.value;
+                              //                 print(isRememberPwdSelected);
+                              //               },
+                              //               child: Row(
+                              //                 children: [
+                              //                   Image.asset(
+                              //                     !isRememberPwdSelected.value
+                              //                         ? AppImageAssets
+                              //                             .iconNotSelect
+                              //                         : AppImageAssets
+                              //                             .iconSelectPwd,
+                              //                     width: 20,
+                              //                   ),
+                              //                   Text(
+                              //                     languageService.translate(
+                              //                         'remember_password',
+                              //                         locale: locale),
+                              //                   )
+                              //                 ],
+                              //               ))),
+                              //       Container(
+                              //         child: Text(
+                              //           languageService.translate(
+                              //               'forgot_password',
+                              //               locale: locale),
+                              //         ),
+                              //       )
+                              //     ],
+                              //   ),
+                              // )
                             ],
                           ),
                         ),
                       ),
+                      
                     ),
                     const SizedBox(height: 20),
                   ],

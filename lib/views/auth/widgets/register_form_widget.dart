@@ -1,80 +1,96 @@
 // 注册表单组件
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:suiyu_frontend/config/app_colors.dart';
 import 'package:suiyu_frontend/core/constants/app_iamge_assets.dart';
+import 'package:suiyu_frontend/notifier/register_notifier.dart';
+import 'package:suiyu_frontend/providers/language_provider.dart';
 import 'package:suiyu_frontend/views/common/custom_input_field.dart';
 
-class RegisterFormWidget extends StatefulWidget {
+class RegisterFormWidget extends HookConsumerWidget {
   const RegisterFormWidget({super.key});
 
   @override
-  _RegisterFormWidget createState()=> _RegisterFormWidget();
+  Widget build(BuildContext context, WidgetRef ref) {
+    final String locale = ref.watch(languageProvider).languageCode;
 
-}
+    // final registrationNotifier = ref.read(registrationProvider.notifier);
+    final usernameController = useTextEditingController();
+    final phoneController = useTextEditingController();
+    final passwordController = useTextEditingController();
+    final codeController = useTextEditingController();
 
-class _RegisterFormWidget extends State<RegisterFormWidget> 
-{
-  @override
-  Widget build(BuildContext context) {
     return Column(
       children: [
         //用户名
-        CustomInputField(hintText: "用户名", icon: AppImageAssets.iconPwd, width: 400, height: 50,),
+        CustomInputField(
+          controller: usernameController,
+          hintText: languageService.translate("user_name", locale: locale),
+          icon: AppImageAssets.iconUser,
+          width: 400,
+          height: 50,
+        ),
+        const SizedBox(height: 10),
+        //密码
+        CustomInputField(
+          controller: passwordController,
+          hintText: languageService.translate('password', locale: locale),
+          icon: AppImageAssets.iconPwd,
+          width: 400,
+          height: 50,
+        ),
         const SizedBox(height: 10),
         //手机号
-        CustomInputField(hintText: "手机号", icon: AppImageAssets.iconPwd, width: 400, height: 50,),
-        const SizedBox(height: 10),
-        //手机号
-        CustomInputField(hintText: "密码", icon: AppImageAssets.iconPwd, width: 400, height: 50,),
+        CustomInputField(
+          controller: phoneController,
+          hintText: languageService.translate('phone_number', locale: locale),
+          icon: AppImageAssets.iconPhone,
+          width: 400,
+          height: 50,
+        ),
         const SizedBox(height: 10),
         //验证码
         Padding(
-            padding: EdgeInsets.fromLTRB(25, 10, 25, 20),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const CustomInputField(
-                    hintText: "验证码",
-                    icon: AppImageAssets.iconCode,
-                    width: 200,
-                    height: 50,
-                  ),
-                  Container(
-                    width: 100,
-                    height: 50,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(8.w),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.1),
-                          spreadRadius: 2,
-                          blurRadius: 5,
-                          offset:
-                              const Offset(0, 3), // changes position of shadow
-                        ),
-                      ],
-                    ),
-                    child: Text(
-                      "3478",
-                      style: TextStyle(
-                          color: AppColors.mainColor, fontSize: 20.sp),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                ]),
-          ),
-        const SizedBox(height: 20),
+          padding: EdgeInsets.fromLTRB(25, 10, 25, 20),
+          child:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            CustomInputField(
+              controller: codeController,
+              hintText: languageService.translate('phone_code', locale: locale),
+              icon: AppImageAssets.iconCode,
+              width: 200,
+              height: 50,
+            ),
+          ]),
+        ),
+        const SizedBox(height: 10),
         //手机验证码
         ElevatedButton(
           onPressed: () {
             // 执行注册逻辑
           },
-          child: const Text('注册'),
+          style: ElevatedButton.styleFrom(
+              backgroundColor: AppColors.mainColor,
+              foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              )),
+          child: Container(
+            width: 350,
+            height: 60,
+            decoration: BoxDecoration(),
+            alignment: Alignment.center,
+            child: Text(
+              languageService.translate('register', locale: locale),
+              style: const TextStyle(fontSize: 30, color: Colors.white),
+            ),
+          ),
         ),
+        const SizedBox(height: 10),
+        TextButton(onPressed: () {}, child: Text(languageService.translate('have_account_login',locale: locale)))
       ],
     );
   }

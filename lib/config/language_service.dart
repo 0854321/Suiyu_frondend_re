@@ -527,6 +527,7 @@ class LanguageService {
       'antithesis': '反序',
       'one_key_adaptive_arrangement': '一键自适应排列',
       'please_input': 'please input',
+      'have_account_login': 'Already have an account, go to log in',
     },
   };
   String translate(String key, {String locale = 'zh'}) {

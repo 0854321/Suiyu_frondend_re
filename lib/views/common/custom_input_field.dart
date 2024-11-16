@@ -30,14 +30,14 @@ class CustomInputField extends HookConsumerWidget{
     final bool themeDark = ref.watch(themeNotifier);
     print("themeDark => $themeDark");
     return Container(
-      padding: EdgeInsets.only(left: 16.w),
+      padding: const EdgeInsets.only(left: 16),
       constraints: BoxConstraints.expand(
-        width: width ?? 431.w,
-        height: height ?? 68.h,
+        width: width ?? 431,
+        height: height ?? 68,
       ),
       decoration: BoxDecoration(
         color: themeDark ? AppDarkColors.backgroundColor : AppColors.backgroundColor,
-        borderRadius: BorderRadius.circular(8.w),
+        borderRadius: BorderRadius.circular(8),
         boxShadow: [
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
@@ -54,19 +54,20 @@ class CustomInputField extends HookConsumerWidget{
             width: 20,
             //height: 18.w,
           ),
-          SizedBox(
-            width: 23.w,
+          const SizedBox(
+            width: 23,
           ),
           Expanded(
             child: TextField(
               controller: controller,
               obscureText: obscureText,
               onChanged: onChanged,
+
               decoration: InputDecoration(
                 fillColor: const Color.fromARGB(137, 90, 90, 90),
                 hintText: hintText,
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(vertical: 16.h),
+                contentPadding: EdgeInsets.symmetric(vertical: 16),
               ),
             )
           )
