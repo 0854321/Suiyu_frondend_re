@@ -33,7 +33,7 @@ class LoginButtonWidget extends StatelessWidget {
       child: Container(
         width: 350,
         height: 60,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           // borderRadius: BorderRadius.circular(8),
           // boxShadow: [
           //   BoxShadow(

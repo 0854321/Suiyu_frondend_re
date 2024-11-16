@@ -93,7 +93,6 @@ class LeftMenuList extends Notifier<List<LeftMenu>> {
               icon: menu.icon,
               itemName: menu.itemName,
               id: menu.id,
-              isSelect: false,
               iconSelect: menu.iconSelect
           )
     ];

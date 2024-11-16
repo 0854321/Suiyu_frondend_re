@@ -1,8 +1,6 @@
-import 'package:dio/dio.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:suiyu_frontend/notifier/login_notifier.dart';
 import 'package:suiyu_frontend/providers/api_service_provider.dart';
-import 'package:suiyu_frontend/services/api_service.dart';
 import 'package:suiyu_frontend/services/auth/login_auth_service.dart';
 
 

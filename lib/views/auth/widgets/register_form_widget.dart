@@ -54,7 +54,7 @@ class RegisterFormWidget extends HookConsumerWidget {
         const SizedBox(height: 10),
         //验证码
         Padding(
-          padding: EdgeInsets.fromLTRB(25, 10, 25, 20),
+          padding: const EdgeInsets.fromLTRB(25, 10, 25, 20),
           child:
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
             CustomInputField(
@@ -81,7 +81,7 @@ class RegisterFormWidget extends HookConsumerWidget {
           child: Container(
             width: 350,
             height: 60,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             alignment: Alignment.center,
             child: Text(
               languageService.translate('register', locale: locale),

@@ -11,7 +11,7 @@ final languageProvider = StateNotifierProvider<LanguageNotifier, Locale>((ref) {
   class LanguageNotifier extends StateNotifier<Locale> {  
     LanguageNotifier(super.state);   
     // 默认语言  
-    void setLocale(Locale locale) async {
+    Future<void> setLocale(Locale locale) async {
       state = locale;    
       await StorageUtil().setValue(AppConsts.saveLanguage, locale.languageCode);  
       }}

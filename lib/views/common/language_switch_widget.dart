@@ -21,7 +21,7 @@ class LanguageSwitchWidget extends HookConsumerWidget {
               ref.read(languageProvider.notifier).setLocale(const Locale('zh'));
               print("切换到中文");
             },
-            child: Text("中文"),
+            child: const Text("中文"),
           ),
           const SizedBox(
             width: 20,
@@ -31,7 +31,7 @@ class LanguageSwitchWidget extends HookConsumerWidget {
               ref.read(languageProvider.notifier).setLocale(const Locale('en'));
               print("切换到英文");
             },
-            child: Text("English"),
+            child: const Text("English"),
           ),
         ],
       ),

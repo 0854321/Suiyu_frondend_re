@@ -18,7 +18,7 @@ class HomeScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     //全球化
-    String locale = ref.watch(languageProvider).languageCode;
+    final String locale = ref.watch(languageProvider).languageCode;
     //主题
     final bool themeDark = ref.watch(themeNotifier);
 

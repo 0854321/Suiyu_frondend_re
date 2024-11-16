@@ -66,7 +66,7 @@ class LoginNotifier extends StateNotifier<AsyncValue<Map<String, dynamic>>> {
   // Map<String, dynamic> build() => loadUserInfo();
 
   Map<String, dynamic> loadUserInfo() {
-    var map = StorageUtil().getJSON(AppConsts.saveUserInfo);
+    final map = StorageUtil().getJSON(AppConsts.saveUserInfo);
     return map ?? {}; // 防止返回 null
   }
 
@@ -76,7 +76,7 @@ class LoginNotifier extends StateNotifier<AsyncValue<Map<String, dynamic>>> {
         "获取的用户名：$username,, 密码：$password,,,,记住密码： $rememberPassword,,,,code: $code");
 
     if (rememberPassword) {
-      var userInfo = UserInfo(
+      final userInfo = UserInfo(
           username: username,
           password: password,
           rememberPassword: rememberPassword);

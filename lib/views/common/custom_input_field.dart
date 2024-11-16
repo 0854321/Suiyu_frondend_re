@@ -67,7 +67,7 @@ class CustomInputField extends HookConsumerWidget{
                 fillColor: const Color.fromARGB(137, 90, 90, 90),
                 hintText: hintText,
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(vertical: 16),
+                contentPadding: const EdgeInsets.symmetric(vertical: 16),
               ),
             )
           )

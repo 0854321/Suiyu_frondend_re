@@ -40,7 +40,7 @@ class LoginFormWidget extends HookConsumerWidget {
     final userInfoFuture = ref.watch(loginProvider);
     if (userInfoFuture.hasValue) {
       print(userInfoFuture.value);
-      UserInfo mUserInfo = UserInfo.fromJson(AsyncValueUtils.unwrapAsyncValue(userInfoFuture));
+      final UserInfo mUserInfo = UserInfo.fromJson(AsyncValueUtils.unwrapAsyncValue(userInfoFuture));
       usernameController.text = mUserInfo.username;
       passwordController.text = mUserInfo.password;
       //isRememberPwdSelected.value = mUserInfo.rememberPassword;
@@ -78,7 +78,7 @@ class LoginFormWidget extends HookConsumerWidget {
           const SizedBox(height: 10),
           //验证码
           Padding(
-            padding: EdgeInsets.fromLTRB(25, 10, 25, 10),
+            padding: const EdgeInsets.fromLTRB(25, 10, 25, 10),
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -107,7 +107,7 @@ class LoginFormWidget extends HookConsumerWidget {
                         ),
                       ],
                     ),
-                    child: Text(
+                    child: const Text(
                       "3478",
                       style:
                           TextStyle(color: AppColors.mainColor, fontSize: 20),
@@ -117,7 +117,7 @@ class LoginFormWidget extends HookConsumerWidget {
                 ]),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(30, 20, 25, 20),
+            padding: const EdgeInsets.fromLTRB(30, 20, 25, 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -136,13 +136,13 @@ class LoginFormWidget extends HookConsumerWidget {
                             : AppImageAssets.iconSelectPwd,
                         width: 20,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 10,
                       ),
                       Text(
                         languageService.translate('remember_password',
                             locale: locale),
-                        style: TextStyle(color: AppColors.mainColor),
+                        style: const TextStyle(color: AppColors.mainColor),
                       ),
                     ],
                   ),
@@ -158,7 +158,7 @@ class LoginFormWidget extends HookConsumerWidget {
                           'forgot_password',
                           locale: locale,
                         ),
-                        style: TextStyle(
+                        style: const TextStyle(
                           color: AppColors.mainColor,
                         ),
                       )),

@@ -19,8 +19,8 @@ class LoginScreen extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final bool themeDark = ref.watch(themeNotifier);
-    String locale = ref.watch(languageProvider).languageCode;
-    var isLogin = true;
+    final String locale = ref.watch(languageProvider).languageCode;
+    final isLogin = true;
     final isLoginForm = useState(true);
 
     return DragToMoveArea(
@@ -40,7 +40,7 @@ class LoginScreen extends HookConsumerWidget {
               child: Center(
                 child: Text(
                   languageService.translate('login_title', locale: locale),
-                  style: TextStyle(fontSize: 24, color: Colors.white),
+                  style: const TextStyle(fontSize: 24, color: Colors.white),
                 ),
               ),
             ),
@@ -51,7 +51,7 @@ class LoginScreen extends HookConsumerWidget {
             width: 500,
             color: const Color.fromARGB(98, 255, 255, 255),
             child: Center(
-              child: Container(
+              child: SizedBox(
                 width: 450, //------待处理
                 // padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 30),
                 child: Column(
@@ -93,7 +93,7 @@ class LoginScreen extends HookConsumerWidget {
                                 height: 30,
                               ),
                               Padding(
-                                padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -130,12 +130,10 @@ class LoginScreen extends HookConsumerWidget {
                                   ],
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 20,
                               ),
-                              isLoginForm.value
-                                  ? LoginFormWidget()
-                                  : RegisterFormWidget(),
+                              if (isLoginForm.value) LoginFormWidget() else RegisterFormWidget(),
                               // const SizedBox(height: 20),
                               // Padding(
                               //   padding:
