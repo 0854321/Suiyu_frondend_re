@@ -6,7 +6,7 @@ import 'package:suiyu_frontend/core/constants/app_consts.dart';
 import 'package:suiyu_frontend/models/user_info_save_model.dart';
 import 'package:suiyu_frontend/services/auth/login_auth_service.dart';
 
-import '../../../utils/storage.dart';
+import '../../../../../utils/storage.dart';
 
 // 登录状态管理器
 class LoginNotifier extends StateNotifier<AsyncValue<Map<String, dynamic>>> {

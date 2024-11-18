@@ -2,7 +2,7 @@ name: suiyu_frontend
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,32 +19,29 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.5.4
+    sdk: ^3.5.4
 
 dependencies:
-  flutter:
-    sdk: flutter
-  cupertino_icons: ^1.0.8
-  dio: ^5.7.0 #网络请求库
-  flutter_riverpod: ^2.6.1  #状态管理库
-  shared_preferences: ^2.3.3  #本地存储库
-  window_manager: ^0.4.3  #管理桌面应用窗口
-  go_router: ^14.6.0  #路由管理
-  easy_localization: ^3.0.7 #全球化
-  flutter_screenutil: ^5.9.3  #屏幕适配
-  flutter_hooks: ^0.20.5
-  hooks_riverpod: ^2.6.1
+    flutter:
+        sdk: flutter
+    cupertino_icons: ^1.0.8
+    dio: ^5.7.0 #网络请求库
+    shared_preferences: ^2.3.3 #本地存储库
+    window_manager: ^0.4.3 #管理桌面应用窗口
+    go_router: ^14.6.0 #路由管理
+    flutter_screenutil: ^5.9.3 #屏幕适配
+    hooks_riverpod: ^2.6.1
+    flutter_hooks: ^0.20.5
 
 dev_dependencies:
-  flutter_test:
-    sdk: flutter
+    flutter_test:
+        sdk: flutter
 
-  flutter_lints: ^4.0.0
+    flutter_lints: ^4.0.0
 
 flutter:
-  assets:
-    - assets/translations/  #配置全球化资源路径
-    - assets/images/ #配置图片资源路径
+    assets:
+        - assets/translations/ #配置全球化资源路径
+        - assets/images/ #配置图片资源路径
 
-  uses-material-design: true
-
+    uses-material-design: true

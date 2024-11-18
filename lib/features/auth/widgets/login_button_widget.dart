@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:suiyu_frontend/config/app_colors.dart';
+import 'package:suiyu_frontend/core/config/app_colors.dart';
 import 'package:suiyu_frontend/providers/language_provider.dart';
 
 class LoginButtonWidget extends StatelessWidget {

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:suiyu_frontend/config/app_colors.dart';
-import 'package:suiyu_frontend/config/app_dart_colors.dart';
-import 'package:suiyu_frontend/config/app_images_path.dart';
+import 'package:suiyu_frontend/core/config/app_colors.dart';
+import 'package:suiyu_frontend/core/config/app_dart_colors.dart';
+import 'package:suiyu_frontend/core/config/app_images_path.dart';
 
 import 'package:suiyu_frontend/providers/language_provider.dart';
 import 'package:suiyu_frontend/providers/theme/theme_provider.dart';
-import 'package:suiyu_frontend/views/auth/widgets/login_form_widget.dart';
-import 'package:suiyu_frontend/views/auth/widgets/register_form_widget.dart';
+import 'package:suiyu_frontend/features/auth/widgets/login_form_widget.dart';
+import 'package:suiyu_frontend/features/auth/widgets/register_form_widget.dart';
 import 'package:suiyu_frontend/views/common/language_switch_widget.dart';
 import 'package:window_manager/window_manager.dart';
 
@@ -20,7 +20,6 @@ class LoginScreen extends HookConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final bool themeDark = ref.watch(themeNotifier);
     final String locale = ref.watch(languageProvider).languageCode;
-    final isLogin = true;
     final isLoginForm = useState(true);
 
     return DragToMoveArea(
@@ -36,12 +35,10 @@ class LoginScreen extends HookConsumerWidget {
         children: [
           // 左侧空白区域
           Expanded(
-            child: Container(
-              child: Center(
-                child: Text(
-                  languageService.translate('login_title', locale: locale),
-                  style: const TextStyle(fontSize: 24, color: Colors.white),
-                ),
+            child: Center(
+              child: Text(
+                languageService.translate('login_title', locale: locale),
+                style: const TextStyle(fontSize: 24, color: Colors.white),
               ),
             ),
           ),
@@ -93,7 +90,8 @@ class LoginScreen extends HookConsumerWidget {
                                 height: 30,
                               ),
                               Padding(
-                                padding: const EdgeInsets.fromLTRB(20, 0, 20, 0),
+                                padding:
+                                    const EdgeInsets.fromLTRB(20, 0, 20, 0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
@@ -133,54 +131,14 @@ class LoginScreen extends HookConsumerWidget {
                               const SizedBox(
                                 height: 20,
                               ),
-                              if (isLoginForm.value) LoginFormWidget() else RegisterFormWidget(),
-                              // const SizedBox(height: 20),
-                              // Padding(
-                              //   padding:
-                              //       const EdgeInsets.fromLTRB(25, 0, 25, 20),
-                              //   child: Row(
-                              //     mainAxisAlignment:
-                              //         MainAxisAlignment.spaceBetween,
-                              //     children: [
-                              //       Container(
-                              //           child: InkWell(
-                              //               onTap: () {
-                              //                 isRememberPwdSelected.value =
-                              //                     !isRememberPwdSelected.value;
-                              //                 print(isRememberPwdSelected);
-                              //               },
-                              //               child: Row(
-                              //                 children: [
-                              //                   Image.asset(
-                              //                     !isRememberPwdSelected.value
-                              //                         ? AppImageAssets
-                              //                             .iconNotSelect
-                              //                         : AppImageAssets
-                              //                             .iconSelectPwd,
-                              //                     width: 20,
-                              //                   ),
-                              //                   Text(
-                              //                     languageService.translate(
-                              //                         'remember_password',
-                              //                         locale: locale),
-                              //                   )
-                              //                 ],
-                              //               ))),
-                              //       Container(
-                              //         child: Text(
-                              //           languageService.translate(
-                              //               'forgot_password',
-                              //               locale: locale),
-                              //         ),
-                              //       )
-                              //     ],
-                              //   ),
-                              // )
+                              if (isLoginForm.value)
+                                LoginFormWidget()
+                              else
+                                const RegisterFormWidget(),
                             ],
                           ),
                         ),
                       ),
-                      
                     ),
                     const SizedBox(height: 20),
                   ],

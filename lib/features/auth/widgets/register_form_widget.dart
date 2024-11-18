@@ -1,12 +1,9 @@
 // 注册表单组件
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
-import 'package:suiyu_frontend/config/app_colors.dart';
+import 'package:suiyu_frontend/core/config/app_colors.dart';
 import 'package:suiyu_frontend/core/constants/app_iamge_assets.dart';
-import 'package:suiyu_frontend/notifier/register_notifier.dart';
 import 'package:suiyu_frontend/providers/language_provider.dart';
 import 'package:suiyu_frontend/views/common/custom_input_field.dart';
 
@@ -16,12 +13,11 @@ class RegisterFormWidget extends HookConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final String locale = ref.watch(languageProvider).languageCode;
-
     // final registrationNotifier = ref.read(registrationProvider.notifier);
-    final usernameController = useTextEditingController();
-    final phoneController = useTextEditingController();
-    final passwordController = useTextEditingController();
-    final codeController = useTextEditingController();
+    final usernameController = TextEditingController();
+    final phoneController = TextEditingController();
+    final passwordController = TextEditingController();
+    final codeController = TextEditingController();
 
     return Column(
       children: [
